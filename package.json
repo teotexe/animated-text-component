@@ -1,6 +1,6 @@
 {
   "name": "animated-text-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Example Component Library",
   "type": "module",
   "main": "dist/index.js",
@@ -15,8 +15,8 @@
   "author": "Matteo Tacconi",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0",
     "opentype.js": "^1.3.4"
   },
   "devDependencies": {
