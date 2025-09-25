@@ -1,5 +1,5 @@
 {
-  "name": "component-library",
+  "name": "animated-text-component",
   "version": "1.0.0",
   "description": "Example Component Library",
   "type": "module",
@@ -12,11 +12,8 @@
     "build": "rm -rf dist && rollup -c"
   },
   "keywords": [],
-  "author": "",
+  "author": "Matteo Tacconi",
   "license": "MIT",
-  "dependencies": {
-    "modern-css-reset": "^1.0.5"
-  },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -53,5 +50,13 @@
       ],
       "@babel/preset-typescript"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teotexe/animated-text-component.git"
+  },
+  "bugs": {
+    "url": "https://github.com/teotexe/animated-text-component/issues"
+  },
+  "homepage": "https://github.com/teotexe/animated-text-component#readme"
 }
