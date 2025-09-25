@@ -1,11 +1,11 @@
-import babel from "@rollup/plugin-babel";
-import postcss from "rollup-plugin-postcss";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import postcss from "rollup-plugin-postcss";
 import postcssImport from "postcss-import";
 import postcssPresetEnv from "postcss-preset-env";
+import babel from "@rollup/plugin-babel";
 
-const extensions = [".js", ".jsx", ".ts", ".tsx"];
+const extensions = [".ts", ".tsx", ".js", ".jsx"];
 
 export default {
   input: "src/index.ts",
@@ -16,18 +16,12 @@ export default {
     preserveModules: true,
     preserveModulesRoot: "src",
   },
-  external: [
-    "react",
-    "react-dom",
-    "react/jsx-runtime",
-    "react/jsx-dev-runtime",
-    "opentype.js",
-  ],
+  external: ["react", "react-dom", "opentype.js"],
   plugins: [
     resolve({ extensions }),
     commonjs(),
     babel({
-      extensions: [".js", ".jsx", ".ts", ".tsx"],
+      extensions,
       babelHelpers: "bundled",
       include: ["src/**/*"],
       exclude: "node_modules/**",
