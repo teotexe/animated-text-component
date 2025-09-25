@@ -14,7 +14,8 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "declarationDir": "dist",
   },
   "include": ["src"]
 }
