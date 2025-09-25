@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import opentype from 'opentype.js';
 import styles from './styles.module.css.js';
-import { j as jsxRuntimeExports } from '../../../node_modules/react/jsx-runtime.js';
+import { jsx } from 'react/jsx-runtime';
 
 function AnimatedText({
   font,
@@ -100,16 +100,16 @@ function AnimatedText({
       console.log(styles.svgTextAnim);
     });
   }, [paths, strokeWidth, strokeColor, duration, delay, timingFunction, repeat, scale]);
-  return /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+  return /*#__PURE__*/jsx("div", {
     className: styles.container,
-    children: /*#__PURE__*/jsxRuntimeExports.jsx("svg", {
+    children: /*#__PURE__*/jsx("svg", {
       ref: svgRef,
       width: width,
       height: height,
       viewBox: viewBox,
       preserveAspectRatio: "xMinYMid meet",
-      children: /*#__PURE__*/jsxRuntimeExports.jsx("g", {
-        children: paths.map((d, i) => /*#__PURE__*/jsxRuntimeExports.jsx("path", {
+      children: /*#__PURE__*/jsx("g", {
+        children: paths.map((d, i) => /*#__PURE__*/jsx("path", {
           d: d,
           vectorEffect: "non-scaling-stroke"
         }, i))

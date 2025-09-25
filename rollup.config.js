@@ -16,7 +16,13 @@ export default {
     preserveModules: true,
     preserveModulesRoot: "src",
   },
-  external: ["react", "react-dom", "opentype.js"],
+  external: [
+  "react",
+  "react-dom",
+  "react/jsx-runtime",
+  "react/jsx-dev-runtime",
+  "opentype.js",
+],
   plugins: [
     resolve({ extensions }),
     commonjs(),
