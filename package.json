@@ -1,6 +1,6 @@
 {
   "name": "animated-text-component",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Example Component Library",
   "type": "module",
   "main": "dist/index.js",
