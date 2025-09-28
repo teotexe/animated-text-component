@@ -4,6 +4,7 @@
   "description": "A svg animated text generator",
   "type": "module",
   "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build:js": "rollup -c",
     "build:types": "tsc",
@@ -12,6 +13,11 @@
   "keywords": [],
   "author": "Matteo Tacconi",
   "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],  
   "peerDependencies": {
     "opentype.js": "^1.3.4",
     "react": "^18.2.0 || ^19.0.0",
