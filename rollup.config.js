@@ -1,7 +1,6 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import postcss from "rollup-plugin-postcss";
-import postcssImport from "postcss-import";
 import postcssPresetEnv from "postcss-preset-env";
 import babel from "@rollup/plugin-babel";
 
@@ -12,7 +11,6 @@ export default {
   output: {
     dir: "dist",
     format: "esm",
-    sourcemap: true,
     preserveModules: true,
     preserveModulesRoot: "src",
   },
@@ -33,13 +31,12 @@ export default {
       exclude: "node_modules/**",
     }),
     postcss({
-      plugins: [postcssImport(), postcssPresetEnv()],
+      plugins: [postcssPresetEnv()],
       modules: {
         generateScopedName: "[folder]_[local]-[hash:base64:5]",
       },
       namedExports: true,
-      extract: true,
-      sourceMap: true,
+      extract: true
     }),
   ],
 };

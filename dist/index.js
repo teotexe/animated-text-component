@@ -1,2 +1,1 @@
-export { AnimatedText } from './components/atoms/AnimatedText/component.js';
-//# sourceMappingURL=index.js.map
+export { AnimatedText } from './components/AnimatedText/component.js';

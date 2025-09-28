@@ -1,14 +1,9 @@
 {
   "name": "animated-text-component",
   "version": "1.0.8",
-  "description": "Example Component Library",
+  "description": "A svg animated text generator",
   "type": "module",
-  "main": "dist/index.js",
   "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "sideEffects": [
-    "*.css"
-  ],
   "scripts": {
     "build:js": "rollup -c",
     "build:types": "tsc",
@@ -29,7 +24,6 @@
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-typescript": "^11.0.0",
     "@types/opentype.js": "^1.3.8",
     "@types/react": "^18.2.12",
     "postcss": "^8.4.30",
@@ -37,9 +31,7 @@
     "postcss-preset-env": "^8.0.1",
     "rollup": "^3.7.0",
     "rollup-plugin-postcss": "^4.0.2",
-    "typescript": "^5.2.0",
-    "modern-css-reset": "^1.4.0",
-    "rollup-plugin-typescript2": "^0.36.0"
+    "typescript": "^5.2.0"
   },
   "browserslist": [
     "defaults"

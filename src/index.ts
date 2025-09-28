@@ -1,3 +1,1 @@
-import "./base.css";
-
-export { AnimatedText } from './components/atoms/AnimatedText/component';
+export { AnimatedText } from './components/AnimatedText/component';

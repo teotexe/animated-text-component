@@ -5,15 +5,11 @@
     "lib": ["DOM", "ESNext"],
     "jsx": "react-jsx",
     "declaration": true,
-    "declarationMap": true,
     "emitDeclarationOnly": true,
     "outDir": "dist",
     "strict": true,
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "esModuleInterop": true
   },
   "include": ["src"]
 }
