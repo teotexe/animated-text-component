@@ -1,6 +1,6 @@
 {
   "name": "animated-text-component",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A svg animated text generator",
   "type": "module",
   "module": "dist/index.js",
