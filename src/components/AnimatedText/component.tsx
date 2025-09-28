@@ -27,9 +27,9 @@ export function AnimatedText({
   fillColor = "#ffffff",
   repeat = true,
 }: AnimatedTextProps) {
-  const svgRef = useRef<SVGSVGElement>(null);
-  const [paths, setPaths] = useState<string[]>([]);
-  const [viewBox, setViewBox] = useState("0 0 0 0");
+  const svgRef = useRef<SVGSVGElement>(null); // Reference to the svg element
+  const [paths, setPaths] = useState<string[]>([]); // svg paths
+  const [viewBox, setViewBox] = useState("0 0 0 0");  // The size of the svg container
   const [height, setHeight] = useState(0);
   const [scale, setScale] = useState(1);
   const paddingFactor = 5;
@@ -51,14 +51,19 @@ export function AnimatedText({
 
       let prevGlyph: opentype.Glyph | null = null;
 
-      for (const char of text) {
+      // Convert text to paths
+      for (const char of text) 
+      {
+        // Convert char to path
         const glyph = userFont.charToGlyph(char);
         const path = glyph.getPath(x, y, fontSize);
         generatedPaths.push(path.toPathData(1));
 
+        // Add kerning (spacing from the previous one)
         const kerning = prevGlyph
           ? userFont.getKerningValue(prevGlyph, glyph)
           : 0;
+        // Add spacing and kerning 
         x += (glyph.advanceWidth ?? fontSize) * spacingFactor + kerning;
 
         prevGlyph = glyph;
@@ -70,10 +75,11 @@ export function AnimatedText({
     loadFont();
   }, [text]);
 
-  // Compute dynamic viewBox and scale factor
+  // Compute dynamic viewBox to make text as big as the container
   useEffect(() => {
     if (paths.length === 0) return;
 
+    // Render temp elements to measure size
     const tempSvg = document.createElementNS(
       "http://www.w3.org/2000/svg",
       "svg"
@@ -93,8 +99,9 @@ export function AnimatedText({
     });
 
     tempSvg.appendChild(tempGroup);
-    document.body.appendChild(tempSvg);
 
+    // Add svg to DOM to render measures and save them
+    document.body.appendChild(tempSvg);
     const bbox = tempGroup.getBBox();
     document.body.removeChild(tempSvg);
 
@@ -103,8 +110,11 @@ export function AnimatedText({
         bbox.height + paddingFactor
       }`
     );
+    // Preserve aspect ratio
     setHeight((bbox.height / bbox.width) * width);
-    setScale(width / bbox.width); // scale factor for path lengths
+
+    // Scale to match given width
+    setScale(width / bbox.width);
   }, [paths, width]);
 
   // Animate paths with proportional path length
@@ -116,12 +126,14 @@ export function AnimatedText({
     let styleEl = svg.querySelector(
       "style[data-svg-anim]"
     ) as HTMLStyleElement | null;
+
+    // If first iteration create style element
     if (!styleEl) {
       styleEl = document.createElement("style");
       styleEl.setAttribute("data-svg-anim", "true");
       svg.appendChild(styleEl);
     }
-    // Add keyframes to style
+    // Add keyframes to style (hash to avoid collisions)
     const animationName = `svgTextAnim_${Math.random()
       .toString(36)
       .slice(2, 8)}`;
@@ -132,19 +144,19 @@ export function AnimatedText({
         100% { stroke-dashoffset: 0; fill: ${fillColor}; }
       }
     `;
-
+    
+    // Add animation to each path
     const pathElements = svg.querySelectorAll("path");
     const iteration = repeat ? "infinite" : "forwards";
 
     pathElements.forEach((path) => {
       const length = path.getTotalLength() * scale;
-      path.style.strokeDasharray = `${length}px`;
-      path.style.strokeDashoffset = `${length}px`;
+      path.style.strokeDasharray = `${length}px`;   // Make it a single dash (that covers entire lenght)
+      path.style.strokeDashoffset = `${length}px`;  // Offset and then animate to make it visible (Like it's drawn)
       path.style.strokeWidth = `${strokeWidth}px`;
       path.style.stroke = strokeColor;
       path.style.fill = "none";
       path.style.animation = `${animationName} ${duration}s ${timingFunction} ${delay}s ${iteration}`;
-      console.log(styles.svgTextAnim);
     });
   }, [
     paths,
